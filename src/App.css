@@ -79,6 +79,9 @@
   padding-left: 20px;
   margin-top: 20px;
 }
+.vl li{
+  margin-left: 30px;
+}
 .box form button{
   width: 150px;
   height: 35px;

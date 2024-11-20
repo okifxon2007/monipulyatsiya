@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import '../src/App.css'
 const App = () => {
   const inpref = useRef(null); 
   const [top, setTop] = useState({ backgroundColor: 'blue' }); 
   const [bottom, setbottom] = useState({ backgroundColor: 'green' }); 
+  const [istory, setistory] = useState('')
 
   function handlebut(e) {
     e.preventDefault();
@@ -12,6 +13,9 @@ const App = () => {
     inpref.current.value = '';
     const storedValue = localStorage.getItem('item'); 
     
+    useEffect(() =>{
+      setistory(storedValue)
+    },[])
 
     if (storedValue && storedValue.includes('B')) {
      
@@ -510,12 +514,12 @@ const App = () => {
             <li>Before</li>
             <li>After</li>
           </ul> <br /> <hr />
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+          <ul className='vl'>
+            <li>L</li>
+            <li>{Date.now()}</li>
+            <li>(0,2)</li>
+            <li>(2,0)</li>
+            
           </ul>
         </div>
         </div>
