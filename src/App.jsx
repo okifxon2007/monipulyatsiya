@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import '../src/App.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 const App = () => {
   const inpref = useRef(null); 
   const [top, setTop] = useState({ backgroundColor: 'blue' }); 
   const [bottom, setbottom] = useState({ backgroundColor: 'green' }); 
-  const [istory, setistory] = useState('')
+
 
   function handlebut(e) {
     e.preventDefault();
@@ -13,18 +16,19 @@ const App = () => {
     inpref.current.value = '';
     const storedValue = localStorage.getItem('item'); 
     
-    useEffect(() =>{
-      setistory(storedValue)
-    },[])
+    
 
     if (storedValue && storedValue.includes('B')) {
      
       setTop({
         transform: 'translateY(-60px)', 
-        transition: '2s',               
+        transition: '2s',  
+                     
       }); 
+      toast.success("Xabar muvaffaqiyatli yuborildi!");
     } else {
-      console.log('item topilmadi');
+      toast.error("Xato yuz berdi!");
+     
     }
     if (storedValue && storedValue.includes('BB')) {
      
@@ -125,6 +129,7 @@ const App = () => {
         transform: 'translateY(60px)', 
         transition: '2s',               
       }); 
+      toast.success("xabar muvaffaqiyatli yuborildi");
     } else {
       console.log('item topilmadi');
     }
@@ -226,6 +231,7 @@ const App = () => {
         transform: 'translateX(60px)', 
         transition: '2s',               
       }); 
+      toast.success("xabar muvaffaqiyatli yuborildi");
     } else {
       console.log('item topilmadi');
     }
@@ -307,7 +313,7 @@ const App = () => {
         transition: '2s',               
       }); 
     } else {
-      console.log('item topilmadi');
+      console.log('');
     }
 
     if (storedValue && storedValue.includes('PPPPPPPPPP')) {
@@ -317,7 +323,7 @@ const App = () => {
         transition: '2s',               
       }); 
     } else {
-      console.log('item topilmadi');
+      console.log('');
     }
 
     if (storedValue && storedValue.includes('PPPPPPPPPPP')) {
@@ -327,7 +333,7 @@ const App = () => {
         transition: '2s',               
       }); 
     } else {
-      console.log('item topilmadi');
+      console.log('');
     }
 
     if (storedValue && storedValue.includes('PPPPPPPPPPPP')) {
@@ -337,13 +343,13 @@ const App = () => {
         transition: '2s',               
       }); 
     } else {
-      console.log('item topilmadi');
+      console.log('');
     }
 
     if (storedValue.includes('O')) {
       alert('P ong tarafga B yuqoriga urish H pastga yurish ')
     } else {
-      console.log('item topilmadi');
+      console.log('');
     }
 
   }
@@ -353,7 +359,8 @@ const App = () => {
   return (
     <div>
       <div className="conta">
-      <h1>Malumot olish uchun inputga O ni kiriting</h1>
+         <ToastContainer />
+      <h1>Malumot olish uchun inputga O ni kiriting agar siz bir nechta yani 'HH PP BB ' qilib kiriting va ishlaydi</h1>
       <div className='display'>
         
         <div className="box">
@@ -523,7 +530,9 @@ const App = () => {
           </ul>
         </div>
         </div>
+        
       </div>
+      
     </div>
   )
 }
